@@ -77,3 +77,17 @@
 .text-huge {
     font-size: 3em !important;
 }
+
+.Blink {
+    animation: blinker 0.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+@keyframes blinker {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
