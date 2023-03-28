@@ -1,0 +1,74 @@
+﻿.main-content {
+    padding: 30px 0;
+}
+
+#mainnav > ul > li {
+    float: left;
+    height: 60px;
+}
+
+    #mainnav > ul > li > a {
+        padding-top: 15px !important;
+        height: 60px;
+    }
+
+        #mainnav > ul > li > a:before {
+            top: 15px !important;
+        }
+
+.header .logo {
+    line-height: 60px !important;
+}
+
+.page-title {
+    padding: 10px !important;
+}
+
+
+.breadcrumbs ul li, .breadcrumbs ul li a {
+    font-size: 12px !important;
+    text-transform: none !important;
+}
+.breadcrumbs ul li span.divider
+{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.flat-row.padding-big {
+    padding: 30px 0 !important;
+}
+
+//Anasayfa Duyurular
+
+.post-scroller-wrap {
+    padding: 15px !important;
+}
+
+.post-item-mini {
+    padding-bottom: 15px !important;
+}
+
+.post-scroller-wrap {
+    padding: 20px !important;
+    margin-top: 24px !important;
+}
+
+.post-scroller-item {
+    padding-bottom: 15px !important;
+}
+
+.post-scroller-control {
+    margin-top: 0px !important;
+}
+
+.thumbnail-overlay-announcelist {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(70,165,229,.8);
+    color: #fff; 
+    font-size: smaller; 
+    text-align: center;
+}

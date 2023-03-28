@@ -1,0 +1,11 @@
+body { padding: 50px 100px; font: 13px/20px Arial; background: #FFF; }
+      a, h1, h2 { color: #369; }
+      h2 { margin-top: 50px; }
+      pre { font-size: 12px; background:#E5F3C8; padding:5px 10px; border: 1px solid #D3EAA4; }
+      dt { font-weight: bold; }
+
+.video{
+	width:700px; 
+	margin:50px auto
+}
+

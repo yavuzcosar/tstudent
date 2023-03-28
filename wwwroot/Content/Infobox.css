@@ -1,0 +1,142 @@
+﻿@media (max-width: 376px) {
+    .infobox-fix > .infobox {
+        min-width: 50% !important;
+    }
+
+        .infobox-fix > .infobox > .infobox-data {
+            min-width: 40px !important;
+        }
+}
+@media (max-width: 479px) {
+    .infobox-fix > .infobox {
+        min-width: 50% !important;
+    }
+
+        .infobox-fix > .infobox > .infobox-data {
+            min-width: 40px !important;
+        }
+}
+
+@media (min-width: 768px) {
+    .infobox-fix > .infobox {
+        width: 25% !important;
+    }
+
+        .infobox-fix > .infobox > .infobox-data {
+            min-width: 40px !important;
+        }
+}
+
+@media (min-width: 992px) {
+    .infobox-fix > .infobox {
+        width: 25% !important;
+    }
+
+        .infobox-fix > .infobox > .infobox-data {
+            min-width: 40px !important;
+        }
+}
+
+@media (min-width: 1200px) {
+    .infobox-fix > .infobox {
+        width: 25% !important;
+    }
+
+        .infobox-fix > .infobox > .infobox-data {
+            min-width: 40px !important;
+        }
+}
+
+.infobox-budget > .infobox > .infobox-icon > .ace-icon {
+    border-radius: 10% !important;
+}
+
+    .infobox-budget > .infobox > .infobox-icon > .ace-icon:before {
+        border-radius: 10% !important;
+    }
+
+
+.infobox-purple > .infobox-icon > .ace-icon {
+    background-color: #6F3CC4 !important;
+}
+
+.infobox-purple2 > .infobox-icon > .ace-icon {
+    background-color: #5F47B0 !important;
+}
+
+.infobox-pink > .infobox-icon > .ace-icon {
+    background-color: #CB6FD7 !important;
+}
+
+.infobox-blue > .infobox-icon > .ace-icon {
+    background-color: #6FB3E0 !important;
+}
+
+.infobox-blue2 > .infobox-icon > .ace-icon {
+    background-color: #3983C2 !important;
+}
+
+.infobox-blue3 > .infobox-icon > .ace-icon {
+    background-color: #1144EB !important;
+}
+
+.infobox-red > .infobox-icon > .ace-icon {
+    background-color: #D53F40 !important;
+}
+
+.infobox-brown > .infobox-icon > .ace-icon {
+    background-color: #C67A3E !important;
+}
+
+.infobox-wood > .infobox-icon > .ace-icon {
+    background-color: #7B3F25 !important;
+}
+
+.infobox-light-brown > .infobox-icon > .ace-icon {
+    background-color: #CEBEA5 !important;
+}
+
+.infobox-orange > .infobox-icon > .ace-icon {
+    background-color: #E8B110 !important;
+}
+
+.infobox-orange2 > .infobox-icon > .ace-icon {
+    background-color: #F79263 !important;
+}
+
+.infobox-green > .infobox-icon > .ace-icon {
+    background-color: #9ABC32 !important;
+}
+
+.infobox-green2 > .infobox-icon > .ace-icon {
+    background-color: #0490A6 !important;
+}
+
+.infobox-grey > .infobox-icon > .ace-icon {
+    background-color: #999999 !important;
+}
+
+.infobox-black > .infobox-icon > .ace-icon {
+    background-color: #393939 !important;
+}
+
+
+
+.infobox-green > .infobox-icon > .before-icon {
+    background-color: #bdd07f !important;
+}
+
+.infobox-red > .infobox-icon > .before-icon {
+    background-color: #eb9798 !important;
+}
+
+
+.infobox-green3 > .infobox-icon > .ace-icon {
+    background-color: #82AF6F !important;
+}
+
+
+.infobox-green3 {
+    color: #82AF6F;
+    border-color: #0490A6;
+}

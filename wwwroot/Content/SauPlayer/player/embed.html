@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<title>README: JW Player</title>
+<meta charset="UTF8" />
+<script src="oq6cioMoEeSwphLddj37mA.js"></script>
+<script>jwplayer.key="BC9ahgShNRQbE4HRU9gujKmpZItJYh5j/+ltVg==";</script>
+<!-- 
+ ads -> BC9ahgShNRQbE4HRU9gujKmpZItJYh5j/+ltVg==
+ premium -> HIBT05i2K7XuVKKKuCNCz9xJnt/lrGu/3Zik++XS+5A=
+ free -> l1l065oQpqodDOezYTFQi3DwaqvjmaRyTKJUdA== -->
+</head>
+<body>
+<div id='video'></div>
+<script type='text/javascript'>
+    jwplayer('video').setup({
+        file: 'video/video.mp4',
+        //skin: 'skins/agreen.xml', // html5 only
+        //primary: 'flash',  // bunu kaldırırsak html5 ile çalışır, eklersek flash ile
+        width: '100%',
+        aspectratio: '16:9',
+        //playlist: "playlist/playlist.rss",
+
+        /*listbar: {
+            position: "right",
+            size: 240
+        },*/
+
+        logo: {
+            file: 'img/logo.png',
+            link: 'http://iamistanbul.tv/'
+        },
+
+       skin: "bekle",
+
+       sharing: {
+          code: encodeURI("<iframe src='http://example.com/embed/12345.html' />"),
+          link: "http://jqueryegitimseti.com/DemoVideolar/Demo2-Etiketleme.mp4",
+          heading: "Videoyu Paylaş"
+       },
+
+       related: {
+          file: "assets/related.rss",
+          onclick: "link",
+          heading: "Benzer Videolar"
+        },
+
+        /*
+        advertising: {
+            'admessage': "Videonuz xx saniye sonra başlayacak.",
+            'skipmessage' : 'Geç xx',
+            'skiptext' : "Geç",
+            'skipoffset': 5,
+            'client': "vast",
+            'schedule': {
+                'adbreak1': {
+                    'offset': 'pre',
+                    'tag': 'http://demo.jwplayer.com.s3.amazonaws.com/player-demos/assets/preroll.xml'
+                },
+                'adbreak2': {
+                    'offset': '10%',
+                    'tag': 'http://demo.jwplayer.com.s3.amazonaws.com/player-demos/assets/overlay.xml'
+                }
+            }
+        },
+*/
+
+        events: {
+
+            onPlay: function (event) {
+                ga('send', 'pageview');
+            }
+        },
+
+        tracks: [{ 
+            file: "assets/en.vtt", 
+            label: "English",
+            kind: "captions",
+            "default": true 
+        },{ 
+            file: "assets/fr.vtt", 
+            kind: "captions",
+            label: "French"
+        }]
+
+
+
+
+    });
+
+
+    jwplayer().addButton(
+    //This portion is what designates the graphic used for the button
+       "img/downloadButton.png",
+    //This portion determines the text that appears as a tooltip
+       "Videoyu İndir", 
+    //This portion designates the functionality of the button itself
+       function() {
+    //With the below code, we're grabbing the file that's currently playing
+           window.location.href = jwplayer().getPlaylistItem()['file'];
+      },
+    //And finally, here we set the unique ID of the button itself.
+      "download"
+    );
+
+
+
+   
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

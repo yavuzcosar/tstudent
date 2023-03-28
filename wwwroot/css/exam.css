@@ -1,0 +1,79 @@
+﻿.tdT {
+    width: 30px;
+}
+
+.fixedTimer2 {
+    background-color: #D15B47;
+    color: white;
+    font-weight: bold;
+    width: 80px;
+    height: 30px;
+    z-index: 100;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.qu-show {
+    display: block!important;
+}
+
+.qu {
+    display: none;
+}
+
+.qu-current {
+    display: block;
+}
+.fixedTimer {
+    background-color: #D15B47;
+    color: white;
+    font-weight: bold;
+    position: fixed;
+    left: 200px;
+    top: 0;
+    width: 120px;
+    height: 40px;
+    z-index: 100;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fontlevel-0 {
+
+}
+
+.fontlevel-1 {
+
+}
+
+.fontlevel-2 {
+    font-size:120%!important;
+}
+
+.fontlevel-3 {
+    font-size: 150% !important;
+}
+.fontlevel-4 {
+    font-size: 200% !important;
+}
+.fontlevel-5 {
+    font-size: 300% !important;
+}
+.text-tiny {
+    font-size: .1em !important;
+}
+
+.text-small {
+    font-size: 1.2em !important;
+}
+
+.text-big {
+    font-size: 2em !important;
+}
+
+.text-huge {
+    font-size: 3em !important;
+}

@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+    <title>README: JW Player</title>
+    <meta charset="UTF8" />
+    <style>
+        body {
+            padding: 50px 100px;
+            width: 700px;
+            font: 13px/20px Arial;
+            background: #FFF;
+        }
+
+        a, h1, h2 {
+            color: #369;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        pre {
+            font-size: 12px;
+            background: #E5F3C8;
+            padding: 5px 10px;
+            border: 1px solid #D3EAA4;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+    </style>
+    <script src="jquery-1.11.2.js"></script>
+    <script src="oq6cioMoEeSwphLddj37mA.js"></script>
+    <script>jwplayer.key = "BC9ahgShNRQbE4HRU9gujKmpZItJYh5j/+ltVg==";</script>
+    <!--
+     ads -> BC9ahgShNRQbE4HRU9gujKmpZItJYh5j/+ltVg==
+     premium -> HIBT05i2K7XuVKKKuCNCz9xJnt/lrGu/3Zik++XS+5A=
+     free -> l1l065oQpqodDOezYTFQi3DwaqvjmaRyTKJUdA==
+    -->
+</head>
+<body>
+    <div id='video'></div>
+    <script type='text/javascript'>
+        jwplayer('video').setup({
+            file: 'video/video.mp4',
+            //skin: 'skins/agreen.xml', // html5 only
+            //primary: 'flash',  // bunu kaldırırsak html5 ile çalışır, eklersek flash ile
+            width: '100%',
+            aspectratio: '16:9',
+            //playlist: "playlist/playlist.rss",
+            /*listbar: {
+                position: "right",
+                size: 240
+            },*/
+            logo: {
+                file: 'img/logo.png',
+                link: 'http://ToltekLMS.com/'
+            },
+            skin: "bekle",
+            sharing: {
+                code: encodeURI("<iframe src='http://jqueryegitimseti.com/player/embed.html' />"),
+                link: "http://jqueryegitimseti.com/player/index.html",
+                heading: "Videoyu Paylaş"
+            },
+            related: {
+                file: "assets/related.rss",
+                onclick: "link",
+                heading: "Benzer Videolar"
+            },
+            /*
+            advertising: {
+                'admessage': "Videonuz xx saniye sonra başlayacak.",
+                'skipmessage' : 'Geç xx',
+                'skiptext' : "Geç",
+                'skipoffset': 5,
+                'client': "vast",
+                'schedule': {
+                    'adbreak1': {
+                        'offset': 'pre',
+                        'tag': 'http://demo.jwplayer.com.s3.amazonaws.com/player-demos/assets/preroll.xml'
+                    },
+                    'adbreak2': {
+                        'offset': '10%',
+                        'tag': 'http://demo.jwplayer.com.s3.amazonaws.com/player-demos/assets/overlay.xml'
+                    }
+                }
+            },
+            */
+            events: {
+                onPlay: function (event) {
+
+                }
+            },
+            tracks: [{
+                file: "assets/en.vtt",
+                label: "English",
+                kind: "captions",
+                "default": true
+            }, {
+                file: "assets/fr.vtt",
+                kind: "captions",
+                label: "French"
+            }]
+        });
+
+
+        /*
+        jwplayer().addButton(
+        //This portion is what designates the graphic used for the button
+           "img/downloadButton.png",
+        //This portion determines the text that appears as a tooltip
+           "Videoyu İndir",
+        //This portion designates the functionality of the button itself
+           function() {
+        //With the below code, we're grabbing the file that's currently playing
+               window.location.href = jwplayer().getPlaylistItem()['file'];
+          },
+        //And finally, here we set the unique ID of the button itself.
+          "download"
+        );
+        */
+
+        $(function () {
+            $('#test').on('click', function () {
+                var position = jwplayer().getPosition();
+                var duration = jwplayer().getDuration();
+
+                jwplayer().seek(15.3)
+                alert(position + ' - ' + duration)
+            }); 
+            $(window).bind('beforeunload', function () {
+                var t = jwplayer().getState();
+                return t;
+            });
+        }) 
+    </script>
+
+    <div id="test">test</div>
+
+    <h1>JW Player - Eklenen Özellikler  </h1>
+    <p>Hazırladığımız playerda bulunan özellikler aşağıda listelenmiştir. İAMİSTANBUL için Mehmet Seven tarafından JWPlayer kullanılarak hazırlanmıştır.</p>
+
+    <h2>Klavye Kısa Yolları</h2>
+    <ul>
+        <li><b>[Space]</b> - Videoyu durdurur/oynatır </li>
+        <li><b>[Enter]</b> - Videoyu durdurur/oynatır </li>
+        <li><b>[M]</b> - Sesi kapatır/açar </li>
+        <li><b>[Yukarı/Aşağı Tuşları]</b> - Video sesini azaltır/artırr </li>
+        <li><b>[Sağ/Sol Tuşları]</b> - Videoyu 5sn ileri ve geri sarar </li>
+        <li><b>[0-9]</b> - Videoyu basılan tuşa göre sarar </li>
+        <li><b>[Yukar/Aşağı Tuşları]</b> - Video sesini azaltır/artırr </li>
+    </ul>
+
+    <h2>Oynatma listesi özelliği</h2>
+    <ul>
+        <li>Oynatma listesine istenildiği kadar video eklenebilir.</li>
+        <li>Oynatma listesi sağda,solda,üstte veya altta istenilen boyutta görüntülenebilir.</li>
+        <li>Oynatma listesindeki videolara açıklama,başlık ve resim eklenebilir. </li>
+        <li>Videoları ister kendi sunucunuzdan ister youtube üzerinden çekebilirsiniz.</li>
+    </ul>
+
+    <h2>Video kalitesi  değiştirme seçeneği</h2>
+    <p>Video playerin sağ alt kısmında çıkan kalite seçeneğine tıklanarak, istenen kaliteye göre video izlenebilir.</p>
+    <ul>
+        <li>360p</li>
+        <li>480p</li>
+        <li>720p HD </li>
+    </ul>
+
+    <h2>Video download özelliği</h2>
+    <p>Videonun sol üst tarafında videoyu indir butonu görüntülenir ve kişi isterse izlediği videoyu bilgisayarına indirebilir.</p>
+
+    <h2>Logo desteği</h2>
+    <p>
+        <ul>
+            <li>Videonun sağ üst kısmında şirket logosu yer alır. (Sadece Pro versiyonda geçerli)</li>
+            <li>Logonun üzerine tıklandığında istenilen siteye yönlendirme yapılır.</li>
+        </ul>
+    </p>
+
+    <h2>Videoyu sosyal ağda paylaşma seçeneği</h2>
+    <p>
+        <ul>
+            <li>Videonun sol üst kısmında paylaşma butonu yer alır. (Sadece Pro versiyonda geçerli)</li>
+        </ul>
+    </p>
+
+    <h2>Benzer videolar </h2>
+    <p>
+        <ul>
+            <li>Benzer videolar kısmı videonun sol üst kısmındaki butona tıklandıktan sonra gösterilir. (Sadece Pro versiyonda geçerli)</li>
+        </ul>
+    </p>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-28248484-2', 'auto');
+    </script>
+</body>
+</html>

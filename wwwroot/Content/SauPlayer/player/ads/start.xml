@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="2.0">
+  <Ad id="static">
+    <InLine>
+      <AdSystem>Static VAST Template</AdSystem>
+      <AdTitle>Static VAST Tag</AdTitle>
+      <Impression>./img/pixel.gif</Impression>
+      <Creatives>
+        <Creative sequence="1">
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start">./img/pixel.gif</Tracking>
+              <Tracking event="firstQuartile">./img/pixel.gif</Tracking>
+              <Tracking event="midpoint">./img/pixel.gif</Tracking>
+              <Tracking event="thirdQuartile">./img/pixel.gif</Tracking>
+              <Tracking event="complete">./img/pixel.gif</Tracking>
+              <Tracking event="pause">./img/pixel.gif</Tracking>
+              <Tracking event="mute">./img/pixel.gif</Tracking>
+              <Tracking event="fullscreen">./img/pixel.gif</Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickThrough>http://www.jwplayer.com/</ClickThrough>
+              <ClickTracking>./img/pixel.gif</ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              <MediaFile type="video/mp4" bitrate="300" width="480" height="270">
+                ./video/ad.mp4
+              </MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+        
+      </Creatives>
+    </InLine>
+  </Ad>
+</VAST>
