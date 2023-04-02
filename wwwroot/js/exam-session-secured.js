@@ -23,12 +23,53 @@
                 RefreshSession("AnswersLoadException");
             }
         }
+        HandleFormSubmit();
     }
     catch (ex) {
         RefreshSession("LoadException");
     }
 });
-
+function HandleFormSubmit() {
+    $("form").bind("keypress", function (e) {
+        var tag = e.target.tagName;
+        if (tag != "TEXTAREA") {
+            if (e.keyCode == 13) {
+                console.log("enter.key.disable");
+                return false;
+            }
+        }
+    });
+    $("form").submit(function (event) {
+        SessionEnding(event);
+    });
+}
+function SessionEnding(event) {
+    var defaultAnswers = $(".widget-title > span.label-default").length;
+    var warningAnswers = $(".widget-title > span.label-warning").length;
+    var dangerAnswers = $(".widget-title > span.label-danger").length;
+    var message = "Sınav oturumunu bitirmek istediğinize emin misiniz";
+    console.log("defaultAnswers:" + defaultAnswers);
+    console.log("warningAnswers:" + warningAnswers);
+    console.log("dangerAnswers:" + dangerAnswers);
+    if (defaultAnswers > 0 || warningAnswers > 0 || dangerAnswers > 0) {
+        var answersMessage = ""
+        if (defaultAnswers > 0 || warningAnswers > 0) {
+            answersMessage = (defaultAnswers + warningAnswers) + " boş";
+        }
+        if (dangerAnswers > 0) {
+            answersMessage = answersMessage + " gönderilemeyen";
+        }
+        message = message + "(" + answersMessage + " soru var)";
+    }
+    message = message + "?";
+    if (confirm(message)) {
+        return true;
+    }
+    else {
+        event.preventDefault();
+        return false;
+    }
+}
 function SessionStart() {
     DLog("SessionStart-Begin");
     var url = "/Answer/ESessionStart?EnrollmentId=" + eid + "&SessionId=" + sid + "&clientDate=" + new Date().toTimeString() + "&clientDuration=" + duration;
