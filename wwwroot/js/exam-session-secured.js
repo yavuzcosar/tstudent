@@ -381,8 +381,11 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
                     $("#" + aid + "_no").removeClass("label-default").removeClass("label-info").removeClass("label-warning").addClass("label-danger");
                     $("#" + aid + "_go").removeClass("badge-default").removeClass("badge-info").removeClass("badge-warning").addClass("badge-danger");
                     ShowError(data.Message);
-                    if (data.Code === 2) {
+                    if (data.Code == 2) {
                         ExamEnded();
+                    }
+                    else if (data.Code == 98) {
+                        location.href = "/exam/details/" + eid;
                     }
                     //ShowError("Lütfen tekrar deneyiniz");
                     $("#btnSend").show();

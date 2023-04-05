@@ -382,6 +382,9 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
                     if (data.Code == 2) {
                         ExamEnded();
                     }
+                    else if (data.Code === 98) {
+                        location.href = "/exam/details/" + eid;
+                    }
                     //ShowError("Lütfen tekrar deneyiniz");
                     $("#btnSend").show();
                 }
