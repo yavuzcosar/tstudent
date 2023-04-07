@@ -23,8 +23,7 @@
                 RefreshSession("AnswersLoadException");
             }
         }
-        HandleFormSubmit();
-       
+        HandleFormSubmit();  
     }
     catch (ex) {
         RefreshSession("LoadException");
@@ -335,7 +334,8 @@ function AnswerConfirmed() {
                 AnswerSend(eid, sid, aid, no, ind, null, null);
             }
         }
-        else if (qtype === "Q7") {
+        else if (qtype === "Q7")
+        {
             var answer = $("#" + aid + "_Text").val();
             AnswerSend(eid, sid, aid, no, ind, "", answer);
         }
@@ -349,9 +349,18 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
         // $(".answer").attr("disabled", true);
         //$("#btnSend").hide();
     }
-    if (Progress > 1) {
-        AnswerNext();
+    if (ContinueOnError==true) {
+        if (Progress > 1)
+        {
+            AnswerNext();
+        }
     }
+    else {
+        if (Progress === 3) {
+            AnswerNext();
+        }
+    }
+   
     if (aid > 0) {
         var postUrl = "/Answer/Answer?EnrollmentId=" + eid + "&SessionId=" + sid + "&AnswerId=" + aid;
         var data = { answer: answer, answerText: answerText, answerIndex: ind, clientDate: new Date().toTimeString(), clientDuration: duration };
@@ -372,7 +381,10 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
                         }
 
                         ShowGritter("<span class='label label-info'>" + ind + "</span> : Cevap Gönderildi", answerText, "info");
-
+                        if(ContinueOnError==false &&  Progress == 2)
+                        {
+                            AnswerNext();
+                        }
                     }
                 }
                 else {
@@ -382,7 +394,7 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
                     if (data.Code == 2) {
                         ExamEnded();
                     }
-                    else if (data.Code === 98) {
+                    else if (data.Code == 98) {
                         location.href = "/exam/details/" + eid;
                     }
                     //ShowError("Lütfen tekrar deneyiniz");
@@ -433,24 +445,39 @@ function AnswerNext() {
         $("#btnEnd").show();
     }
 }
-function AnswerGo(el, index) {
-    console.log("AnswerGo:" + CurrentIndex + "/" + index);
-    var isWarning = $(el).hasClass("badge-danger");
-    if (Progress == 2 && !isWarning) {
-        ShowError("Soruları sırayla cevaplayabilirsiniz !");
+function AnswerGo(el, index)
+{
+    console.log("AnswerGo:" + CurrentIndex + "/" + index); 
+    if (ContinueOnError == true) {
+        var isWarning = $(el).hasClass("badge-danger"); 
+        if (Progress == 2 && !isWarning) {
+            ShowError("Soruları sırayla cevaplayabilirsiniz !");
+        }
+        else {
+            var CurrentQuestion = $("#qu_" + CurrentIndex);
+            $(CurrentQuestion).addClass("qu").removeClass("qu-current");
+            CurrentIndex = index;
+            AnswerLoad();
+            if (CurrentIndex == AnswersCount) {
+                $("#btnEnd").show();
+            } 
+        }
     }
     else {
-        var CurrentQuestion = $("#qu_" + CurrentIndex);
-        $(CurrentQuestion).addClass("qu").removeClass("qu-current");
-        CurrentIndex = index;
-        AnswerLoad();
-        if (CurrentIndex == AnswersCount) {
-            $("#btnEnd").show();
+        if (Progress == 2) {
+            ShowError("Soruları sırayla cevaplayabilirsiniz !");
         }
-        //else {
-        //    $("#btnEnd").hide();
-        //}
+        else {
+            var CurrentQuestion = $("#qu_" + CurrentIndex);
+            $(CurrentQuestion).addClass("qu").removeClass("qu-current");
+            CurrentIndex = index;
+            AnswerLoad();
+            if (CurrentIndex == AnswersCount) {
+                $("#btnEnd").show();
+            } 
+        }
     }
+   
 }
 var ending = false;
 function ExamEnded() {

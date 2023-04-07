@@ -51,13 +51,14 @@ function SessionEnding(event) {
     console.log("defaultAnswers:" + defaultAnswers);
     console.log("warningAnswers:" + warningAnswers);
     console.log("dangerAnswers:" + dangerAnswers);
-    if (defaultAnswers > 0 || warningAnswers > 0 || dangerAnswers > 0) {
-        var answersMessage = ""
+    if (defaultAnswers > 0 || warningAnswers > 0 || dangerAnswers > 0)
+    {
+        var answersMessage=""
         if (defaultAnswers > 0 || warningAnswers > 0) {
             answersMessage = (defaultAnswers + warningAnswers) + " boş";
         }
         if (dangerAnswers > 0) {
-            answersMessage = answersMessage + " gönderilemeyen";
+            answersMessage = answersMessage +  " gönderilemeyen";
         }
         message = message + "(" + answersMessage + " soru var)";
     }
