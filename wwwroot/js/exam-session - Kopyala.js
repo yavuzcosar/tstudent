@@ -1,6 +1,4 @@
-﻿var ConfirmingIndex = null;
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     DLog("status:" + status);
     $("#btnEnd").hide();
     try {
@@ -296,7 +294,7 @@ function AnswerConfirmed() {
     console.log("AnswerConfirmed:", CurrentIndex);
     var CurrentQuestion = $("#qu_" + CurrentIndex);
     if (CurrentQuestion) {
-        ConfirmingIndex = CurrentIndex;
+
         var qtype = $(CurrentQuestion).attr("data-qtype");
         console.log("qtype", qtype);
         var rid = $(CurrentQuestion).attr("id");
@@ -313,10 +311,10 @@ function AnswerConfirmed() {
             console.log(ind + "-SelectedIds", SelectedIds);
             console.log(ind + "-SelectedTexts", SelectedTexts);
             if (SelectedIds) {
-                AnswerSend(eid, sid, aid, no, ind, SelectedIds.join("|"), SelectedTexts.join("|"));
+                AnswerSend(CurrentIndex,eid, sid, aid, no, ind, SelectedIds.join("|"), SelectedTexts.join("|"));
             }
             else {
-                AnswerSend(eid, sid, aid, no, ind, null, null);
+                AnswerSend(CurrentIndex,eid, sid, aid, no, ind, null, null);
             }
 
         }
@@ -330,21 +328,22 @@ function AnswerConfirmed() {
             console.log(ind + "-SelectedIds", SelectedIds);
             console.log(ind + "-SelectedTexts", SelectedTexts);
             if (SelectedIds) {
-                AnswerSend(eid, sid, aid, no, ind, SelectedIds.join("|"), SelectedTexts.join("|"));
+                AnswerSend(CurrentIndex,eid, sid, aid, no, ind, SelectedIds.join("|"), SelectedTexts.join("|"));
             }
             else {
-                AnswerSend(eid, sid, aid, no, ind, null, null);
+                AnswerSend(CurrentIndex,eid, sid, aid, no, ind, null, null);
             }
         }
         else if (qtype === "Q7")
         {
             var answer = $("#" + aid + "_Text").val();
-            AnswerSend(eid, sid, aid, no, ind, "", answer);
+            AnswerSend(CurrentIndex,eid, sid, aid, no, ind, "", answer);
         }
     }
 }
 
-function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
+function AnswerSend(ci,eid, sid, aid, no, ind, answer, answerText) {
+
     $("#" + aid + "_loading").show();
     if (Progress > 1) {
         // $(".answer").attr("disabled", true);
@@ -353,15 +352,14 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
     if (ContinueOnError==true) {
         if (Progress > 1)
         {
-            AnswerNext();
+            AnswerNext(ci);
         }
     }
     else {
         if (Progress === 3) {
-            AnswerNext();
+            AnswerNext(ci);
         }
-    }
-   
+    } 
     if (aid > 0) {
         var postUrl = "/Answer/Answer?EnrollmentId=" + eid + "&SessionId=" + sid + "&AnswerId=" + aid;
         var data = { answer: answer, answerText: answerText, answerIndex: ind, clientDate: new Date().toTimeString(), clientDuration: duration };
@@ -384,7 +382,7 @@ function AnswerSend(eid, sid, aid, no, ind, answer, answerText) {
                         ShowGritter("<span class='label label-info'>" + ind + "</span> : Cevap Gönderildi", answerText, "info");
                         if(ContinueOnError==false &&  Progress == 2)
                         {
-                            AnswerNext(); 
+                            AnswerNext(ci); 
                         }
                     }
                 }
@@ -433,16 +431,16 @@ function AnswerPrev() {
         }
     }
 }
-
-function AnswerNext() {
-    console.log("AnswerNext:Current:" + CurrentIndex + "/" + AnswersCount);
-    if (CurrentIndex < AnswersCount) {
-        var CurrentQuestion = $("#qu_" + CurrentIndex);
+ 
+function AnswerNext(ci) {
+    console.log("AnswerNext:Current:" + ci + "/" + AnswersCount);
+    if (ci < AnswersCount) {
+        var CurrentQuestion = $("#qu_" + ci);
         $(CurrentQuestion).addClass("qu").removeClass("qu-current");
-        if (ConfirmingIndex == CurrentIndex) {
+        if (CurrentIndex == ci) {
             CurrentIndex = CurrentIndex + 1;
-        }
-        AnswerLoad();
+            AnswerLoad();
+        } 
     }
     else {
         $("#btnEnd").show();

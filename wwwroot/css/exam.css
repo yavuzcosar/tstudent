@@ -91,3 +91,7 @@
         opacity: 0;
     }
 }
+
+#return-to-top {
+    display:none!important;
+}
